@@ -1,7 +1,6 @@
 # Railway Planner & Enquiry Portal
-**Course Project — Data Structures and Algorithms Lab | IIT Bombay**
 
-A high-performance C++ Railway Enquiry System, Route Planner, and Review Management Portal built from scratch. The application demonstrates core data structures and algorithms covered in the IIT Bombay CS213 / CS293 Data Structures syllabus: **AVL Trees**, **Hash Tables**, **Min-Heaps**, **Tries**, **Weighted Graphs (Dijkstra's Algorithm)**, **KMP String Matching**, and **Quicksort**.
+A high-performance C++ Railway Enquiry System, Route Planner, and Review Management Portal built from scratch using foundational Data Structures and Algorithms: **AVL Trees**, **Hash Tables**, **Min-Heaps**, **Tries**, **Weighted Graphs (Dijkstra's Algorithm)**, **KMP String Matching**, and **Quicksort**.
 
 ---
 
@@ -134,7 +133,7 @@ cmake --build build
 
 ```text
 ========================================================================
-     IIT BOMBAY DSA LAB - RAILWAY PLANNER & ENQUIRY PORTAL              
+             RAILWAY PLANNER & ENQUIRY PORTAL              
   (AVL Tree | Hash Table | MinHeap | Trie | Dijkstra | KMP | Quicksort) 
 ========================================================================
 
@@ -163,4 +162,4 @@ The unit test suite (`tests/test_main.cpp`) rigorously verifies correctness and 
 ---
 
 ## 📜 License
-Developed for educational purposes — IIT Bombay Data Structures and Algorithms Lab (Autumn '22).
+Open Source — Released under the MIT License.

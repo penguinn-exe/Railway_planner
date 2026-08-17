@@ -19,7 +19,7 @@
 void printHeader() {
     std::cout << CYAN << BOLD;
     std::cout << "========================================================================\n";
-    std::cout << "     IIT BOMBAY DSA LAB - RAILWAY PLANNER & ENQUIRY PORTAL              \n";
+    std::cout << "                RAILWAY PLANNER & ENQUIRY PORTAL                        \n";
     std::cout << "  (AVL Tree | Hash Table | MinHeap | Trie | Dijkstra | KMP | Quicksort) \n";
     std::cout << "========================================================================\n" << RESET;
 }
