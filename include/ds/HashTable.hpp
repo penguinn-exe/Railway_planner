@@ -40,7 +40,8 @@ private:
         size_t m = 1e9 + 9;
         size_t p_pow = 1;
         for (char c : key) {
-            hashVal = (hashVal + (c - 'a' + 1) * p_pow) % m;
+            size_t charVal = static_cast<unsigned char>(c) + 1;
+            hashVal = (hashVal + charVal * p_pow) % m;
             p_pow = (p_pow * p) % m;
         }
         return hashVal;

@@ -134,12 +134,13 @@ private:
             if (!node->left || !node->right) {
                 Node* temp = node->left ? node->left : node->right;
                 if (!temp) {
-                    temp = node;
+                    delete node;
                     node = nullptr;
                 } else {
-                    *node = *temp;
+                    Node* old = node;
+                    node = temp;
+                    delete old;
                 }
-                delete temp;
             } else {
                 Node* temp = getMinValueNode(node->right);
                 node->key = temp->key;

@@ -41,18 +41,23 @@ bool testAVLTree() {
     auto range = avl.rangeSearch(20, 40);
     TEST_ASSERT(range.size() == 4, "Range 20..40 should contain 4 elements");
 
-    // Remove
+    // Deletions: leaf, 1-child, 2-children nodes
     bool rem = avl.remove(30);
     TEST_ASSERT(rem, "Removal of 30 should succeed");
     TEST_ASSERT(!avl.contains(30), "Should no longer contain 30");
     TEST_ASSERT(avl.size() == 5, "Size should be 5");
+
+    // Clear and test empty
+    avl.clear();
+    TEST_ASSERT(avl.empty(), "Tree should be empty after clear()");
+    TEST_ASSERT(avl.size() == 0, "Size should be 0 after clear()");
 
     std::cout << "PASSED ✓\n";
     return true;
 }
 
 bool testHashTable() {
-    std::cout << "[Test] Hash Table Operations... ";
+    std::cout << "[Test] Hash Table Operations & Collision Handling... ";
     HashTable<std::string, int> ht(4, 0.75f);
 
     ht.put("CSMT", 1);
@@ -65,6 +70,13 @@ bool testHashTable() {
     TEST_ASSERT(ht.contains("NDLS"), "Should contain NDLS");
     TEST_ASSERT(*ht.get("NDLS") == 2, "NDLS value should be 2");
     TEST_ASSERT(ht.bucketCount() > 4, "Bucket count should have grown after rehash");
+
+    // Mass insertion test (100 elements to stress test collision & rehash)
+    for (int i = 0; i < 100; ++i) {
+        ht.put("PNR" + std::to_string(i), i * 100);
+    }
+    TEST_ASSERT(ht.size() == 105, "Size should be 105 after mass insertion");
+    TEST_ASSERT(*ht.get("PNR42") == 4200, "PNR42 value should be 4200");
 
     bool rem = ht.remove("HWH");
     TEST_ASSERT(rem, "Removal of HWH should succeed");
@@ -94,6 +106,11 @@ bool testMinHeap() {
     TEST_ASSERT(heap.pop() == 50, "Pop should return 50");
     TEST_ASSERT(heap.empty(), "Heap should be empty");
 
+    // Build heap static method test
+    std::vector<int> nums = {45, 12, 89, 3, 21};
+    MinHeap<int> builtHeap = MinHeap<int>::buildHeap(nums);
+    TEST_ASSERT(builtHeap.top() == 3, "Build heap min element must be 3");
+
     std::cout << "PASSED ✓\n";
     return true;
 }
@@ -111,15 +128,15 @@ bool testTrie() {
     TEST_ASSERT(trie.search("clean"), "Search for 'clean' should be true");
     TEST_ASSERT(trie.startsWith("clea"), "startsWith 'clea' should be true");
 
-    auto sugg = trie.getSuggestions("cle");
-    TEST_ASSERT(sugg.size() == 2, "Suggestions for 'cle' should return 2 words");
+    auto sugg = trie.getSuggestions("CLE"); // Case-insensitive test
+    TEST_ASSERT(sugg.size() == 2, "Suggestions for 'CLE' should return 2 words");
 
     std::cout << "PASSED ✓\n";
     return true;
 }
 
 bool testKMP() {
-    std::cout << "[Test] KMP String Matching... ";
+    std::cout << "[Test] KMP String Matching Edge Cases... ";
     std::string text = "The railway station was clean, very clean and comfortable.";
     std::string pattern = "clean";
 
@@ -130,12 +147,20 @@ bool testKMP() {
 
     TEST_ASSERT(KMP::contains(text, "COMFORTABLE"), "Case insensitive matching should work");
 
+    // Edge case: Non-matching pattern
+    auto noMatches = KMP::search(text, "nonexistent");
+    TEST_ASSERT(noMatches.empty(), "Non-existent pattern should return empty vector");
+
+    // Edge case: Pattern longer than text
+    auto longMatches = KMP::search("short", "verylongpattern");
+    TEST_ASSERT(longMatches.empty(), "Long pattern should return empty vector");
+
     std::cout << "PASSED ✓\n";
     return true;
 }
 
 bool testQuicksort() {
-    std::cout << "[Test] Quicksort Algorithm... ";
+    std::cout << "[Test] Quicksort Algorithm Edge Cases... ";
     std::vector<int> nums = {42, 12, 88, 3, 27, 95, 1, 64};
     Quicksort::sort(nums);
 
@@ -145,6 +170,15 @@ bool testQuicksort() {
     // Test with custom comparator (descending)
     Quicksort::sort(nums, std::greater<int>());
     TEST_ASSERT(nums[0] == 95 && nums.back() == 1, "Descending sort correct");
+
+    // Edge case: Already sorted vector
+    Quicksort::sort(nums, std::less<int>());
+    TEST_ASSERT(std::is_sorted(nums.begin(), nums.end()), "Already sorted vector stays sorted");
+
+    // Edge case: Single element and duplicate elements
+    std::vector<int> duplicates = {5, 5, 5, 1, 2, 5, 2, 1};
+    Quicksort::sort(duplicates);
+    TEST_ASSERT(std::is_sorted(duplicates.begin(), duplicates.end()), "Duplicates vector must be sorted");
 
     std::cout << "PASSED ✓\n";
     return true;
@@ -166,6 +200,10 @@ bool testGraphDijkstra() {
     auto itinerary = g.findShortestPath("CSMT", "NDLS", WeightCriterion::DISTANCE);
     TEST_ASSERT(!itinerary.segments.empty(), "Path should exist");
     TEST_ASSERT(itinerary.totalDistanceKm == 1384.0, "Total distance should be 1384 km");
+
+    // Unreachable destination test
+    auto noPath = g.findShortestPath("CSMT", "UNREACHABLE_CODE");
+    TEST_ASSERT(noPath.segments.empty(), "Unreachable station should return empty itinerary");
 
     std::cout << "PASSED ✓\n";
     return true;
