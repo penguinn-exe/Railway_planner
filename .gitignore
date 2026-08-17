@@ -1,0 +1,13 @@
+# Build directories and binaries
+build/
+railway_planner
+run_tests
+*.o
+*.a
+*.so
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+*.swp
