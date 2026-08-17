@@ -1,0 +1,11 @@
+id,code,name,city,state,platforms
+1,CSMT,Mumbai CSMT,Mumbai,Maharashtra,18
+2,NDLS,New Delhi,New Delhi,Delhi,16
+3,HWH,Howrah Junction,Kolkata,West Bengal,23
+4,SBC,KSR Bengaluru,Bengaluru,Karnataka,10
+5,MAS,Chennai Central,Chennai,Tamil Nadu,12
+6,ADI,Ahmedabad Junction,Ahmedabad,Gujarat,12
+7,BRC,Vadodara Junction,Vadodara,Gujarat,7
+8,BPL,Bhopal Junction,Bhopal,Madhya Pradesh,6
+9,PUNE,Pune Junction,Pune,Maharashtra,6
+10,PNBE,Patna Junction,Patna,Bihar,10

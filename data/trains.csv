@@ -1,0 +1,6 @@
+trainNumber,trainName,type,sourceCode,destCode,stops
+12951,Mumbai Rajdhani,Rajdhani,CSMT,NDLS,CSMT:Mumbai CSMT:0:1010:0:0;BRC:Vadodara Junction:1220:1230:392:650;ADI:Ahmedabad Junction:1310:1320:492:800;BPL:Bhopal Junction:210:220:835:1400;NDLS:New Delhi:510:510:1384:2200
+12002,Bhopal Shatabdi,Shatabdi,NDLS,BPL,NDLS:New Delhi:0:360:0:0;BPL:Bhopal Junction:840:840:705:1150
+12260,Howrah Duronto,Duronto,NDLS,HWH,NDLS:New Delhi:0:750:0:0;PNBE:Patna Junction:1380:1390:998:1600;HWH:Howrah Junction:360:360:1530:2400
+12626,Kerala Express,Superfast,NDLS,MAS,NDLS:New Delhi:0:1210:0:0;BPL:Bhopal Junction:300:310:705:950;SBC:KSR Bengaluru:1200:1215:2180:2100;MAS:Chennai Central:1430:1430:2530:2500
+11077,Jhelum Express,Express,CSMT,NDLS,CSMT:Mumbai CSMT:0:1040:0:0;PUNE:Pune Junction:1250:1260:192:250;BPL:Bhopal Junction:450:460:890:1100;NDLS:New Delhi:990:990:1590:1850
